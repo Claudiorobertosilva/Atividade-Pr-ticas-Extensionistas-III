@@ -1,0 +1,71 @@
+```html
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+
+<meta charset="UTF-8">
+
+<title>Contato</title>
+
+<link rel="stylesheet" href="style.css">
+
+</head>
+
+<body>
+
+<header>
+
+<h1>📩 Contato com os Desenvolvedores</h1>
+
+</header>
+
+<main>
+
+<section>
+
+<h2>Fale Conosco</h2>
+
+<input type="text" id="nome" placeholder="Nome">
+
+<input type="email" id="email" placeholder="E-mail">
+
+<input type="text" id="assunto" placeholder="Assunto">
+
+<textarea id="mensagem" placeholder="Digite sua mensagem" rows="6"></textarea>
+
+<button onclick="enviar()">Enviar Mensagem</button>
+
+</section>
+
+</main>
+
+<script>
+
+function enviar(){
+
+const nome=document.getElementById("nome").value;
+
+if(nome===""){
+
+alert("Preencha seu nome.");
+
+return;
+
+}
+
+alert("Mensagem enviada com sucesso!");
+
+document.getElementById("nome").value="";
+document.getElementById("email").value="";
+document.getElementById("assunto").value="";
+document.getElementById("mensagem").value="";
+
+}
+
+</script>
+
+</body>
+
+</html>
+```
