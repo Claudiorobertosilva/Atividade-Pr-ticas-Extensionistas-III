@@ -1,0 +1,51 @@
+CREATE DATABASE sistema_consultas;
+USE sistema_consultas;
+
+CREATE TABLE usuarios(
+id INT AUTO_INCREMENT PRIMARY KEY,
+nome VARCHAR(100) NOT NULL,
+email VARCHAR(100) NOT NULL UNIQUE,
+senha VARCHAR(100) NOT NULL,
+perfil VARCHAR(30) NOT NULL
+);
+
+CREATE TABLE especialidades(
+id INT AUTO_INCREMENT PRIMARY KEY,
+nome VARCHAR(100) NOT NULL
+);
+
+CREATE TABLE medicos(
+id INT AUTO_INCREMENT PRIMARY KEY,
+nome VARCHAR(100) NOT NULL,
+crm VARCHAR(20) NOT NULL UNIQUE,
+telefone VARCHAR(20),
+email VARCHAR(100),
+id_especialidade INT,
+FOREIGN KEY(id_especialidade)
+REFERENCES especialidades(id)
+);
+
+CREATE TABLE pacientes(
+id INT AUTO_INCREMENT PRIMARY KEY,
+nome VARCHAR(100) NOT NULL,
+cpf VARCHAR(14) NOT NULL UNIQUE,
+telefone VARCHAR(20),
+email VARCHAR(100),
+data_nascimento DATE
+);
+
+CREATE TABLE consultas(
+id INT AUTO_INCREMENT PRIMARY KEY,
+data DATE NOT NULL,
+hora TIME NOT NULL,
+status VARCHAR(30) DEFAULT "Agendada",
+
+id_paciente INT NOT NULL,
+id_medico INT NOT NULL,
+
+FOREIGN KEY(id_paciente)
+REFERENCES pacientes(id),
+
+FOREIGN KEY(id_medico)
+REFERENCES medicos(id)
+);
